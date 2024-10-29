@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: '5.15.2'
+        host: 'ubuntu'
+        target: 'desktop'
+        arch: 'gcc_64'
+
+    - name: Build with qmake
+      run: |
+        mkdir build
+        cd build
+        qmake ../
+        make
+
+    - name: Run tests
+      run: |
+        cd build
+        ./tests/GradeCalculatorTests
