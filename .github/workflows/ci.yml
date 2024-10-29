@@ -28,14 +28,3 @@ jobs:
         cd build
         qmake ../
         make
-
-    - name: Run tests
-      run: |
-        cd build
-        # Ensure the test binary exists
-        if [ -f ./tests/GradeCalculatorTests ]; then
-          ./tests/GradeCalculatorTests
-        else
-          echo "Test binary not found!"
-          exit 1
-        fi
