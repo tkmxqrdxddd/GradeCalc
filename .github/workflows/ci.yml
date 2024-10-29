@@ -18,7 +18,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: '5.15.2'
-        host: 'linux'  # Changed from 'ubuntu' to 'linux'
+        host: 'linux'
         target: 'desktop'
         arch: 'gcc_64'
 
@@ -32,4 +32,10 @@ jobs:
     - name: Run tests
       run: |
         cd build
-        ./tests/GradeCalculatorTests
+        # Ensure the test binary exists
+        if [ -f ./tests/GradeCalculatorTests ]; then
+          ./tests/GradeCalculatorTests
+        else
+          echo "Test binary not found!"
+          exit 1
+        fi
