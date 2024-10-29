@@ -18,7 +18,7 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         version: '5.15.2'
-        host: 'ubuntu'
+        host: 'linux'  # Changed from 'ubuntu' to 'linux'
         target: 'desktop'
         arch: 'gcc_64'
 
