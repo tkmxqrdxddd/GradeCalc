@@ -15,7 +15,7 @@ HEADERS = mainwindow.h
 OBJECTS = $(SOURCES:.cpp=.o)
 
 # Target executable
-TARGET = myapp
+TARGET = GradeCalc
 
 # Build rules
 all: $(TARGET)
